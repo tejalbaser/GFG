@@ -1,0 +1,39 @@
+//bruteforce approach
+
+class Solution {
+  public:
+    int peakElement(vector<int> &arr) {
+        int n = arr.size();
+        if (n == 1) return 0; // only one element is a peak
+        for (int i = 0; i < n; i++) {
+            if ((i == 0 || arr[i] >= arr[i - 1]) &&
+                (i == n - 1 || arr[i] >= arr[i + 1])) {
+                return i; // found a peak
+            }
+        }
+        return -1; // should never reach here
+    }
+};
+
+//optimal sol
+
+class Solution {
+  public:
+    int peakElement(vector<int> &arr) {
+        int low = 0, high = arr.size() - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] > arr[mid + 1])
+                high = mid;
+            else
+                low = mid + 1;
+        }
+        return low; // or high, both point to a peak element
+    }
+};
+
+i/p:
+1 2 4 5 7 8 3
+
+o/p:
+true
