@@ -1,0 +1,33 @@
+class Solution {
+  public:
+    int missingNum(vector<int>& arr) {
+        // code here
+        long n = *max_element(arr.begin(), arr.end());
+        long expected_sum = n*(n+1)/2;
+        long actual_sum = 0;
+        for(int i=0;i<arr.size();i++){
+            actual_sum = actual_sum + arr[i];
+        }
+        long m = expected_sum - actual_sum;
+        if(m==0){
+            return n+1;
+        }
+        return m;
+    }
+};
+
+1. Input: 
+arr[] =
+1 2 3 5
+Your Output:
+4
+Expected Output:
+4
+
+2. Input: 
+arr[] =
+1 
+Your Output:
+2
+Expected Output:
+2
