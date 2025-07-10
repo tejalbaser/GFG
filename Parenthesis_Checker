@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    bool isBalanced(string& k) {
+        stack<char> s;
+        for (char ch : k) {
+            if (ch == '(' || ch == '{' || ch == '[') {
+                s.push(ch);
+            } else {
+                if (s.empty()) return false;
+                if ((ch == ')' && s.top() != '(') ||
+                    (ch == '}' && s.top() != '{') ||
+                    (ch == ']' && s.top() != '[')) {
+                    return false;
+                }
+                s.pop();
+            }
+        }
+        return s.empty();
+    }
+};
+
+Input: 
+s =
+[{()}]
+Your Output:
+true
+Expected Output:
+true
