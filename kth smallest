@@ -1,0 +1,21 @@
+class Solution {
+  public:
+    // arr : given array
+    // k : find kth smallest element and return using this function
+    int kthSmallest(vector<int> &arr, int k) {
+        // code here
+        sort(arr.begin(), arr.end());
+        return arr[k-1];
+        
+    }
+};
+
+Input: 
+arr[] =
+7 10 4 3 20 15
+k =
+3
+Your Output:
+7
+Expected Output:
+7
