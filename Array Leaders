@@ -1,0 +1,35 @@
+
+
+class Solution {
+  public:
+    vector<int> leaders(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> result;
+        int maxFromRight = arr[n - 1];
+        result.push_back(maxFromRight);  // Last element is always a leader
+        
+        // Traverse from second last to first
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] >= maxFromRight) {
+                maxFromRight = arr[i];
+                result.push_back(arr[i]);
+            }
+        }
+        
+        // Reverse to get leaders in the same order as input
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};
+
+
+
+o/p:
+
+Input: 
+arr[] =
+16 17 4 3 5 2
+Your Output:
+17 5 2
+Expected Output:
+17 5 2
