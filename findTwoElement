@@ -21,3 +21,14 @@ class Solution {
         return {repeating, missing};
     }
 };
+
+
+o/p:
+
+Input: 
+arr[] =
+2 2
+Your Output:
+[2, 1]
+Expected Output:
+[2, 1]
