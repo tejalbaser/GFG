@@ -1,0 +1,35 @@
+class Solution {
+  public:
+    string reverseWords(string &s) {
+       vector<pair<int,int>> segs; // (start, length) of each non-empty word
+        int n = (int)s.size();
+        int i = 0;
+
+        while (i < n) {
+            // skip dots
+            while (i < n && s[i] == '.') i++;
+            if (i >= n) break;
+
+            int start = i;
+            while (i < n && s[i] != '.') i++;
+            int len = i - start;
+            if (len > 0) segs.push_back({start, len});
+        }
+
+        // join in reverse order with single dots
+        string res;
+        // reserve approx to avoid reallocs (upper bound)
+        res.reserve(s.size());
+        for (int k = (int)segs.size() - 1; k >= 0; --k) {
+            res.append(s, segs[k].first, segs[k].second);
+            if (k > 0) res.push_back('.');
+        }
+        return res;
+    }
+};
+
+/*
+Input: s = "i.like.this.program.very.much"
+Output: "much.very.program.this.like.i"
+Explanation: The words in the input string are reversed while maintaining the dots as separators, resulting in "much.very.program.this.like.i".
+*/
