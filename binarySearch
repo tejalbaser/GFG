@@ -1,0 +1,33 @@
+class Solution {
+  public:
+    int binarysearch(vector<int> &arr, int k) {
+         int low = 0, high = arr.size() - 1;
+        int ans = -1;  // store result
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == k) {
+                ans = mid;       // store this index
+                high = mid - 1;  // but keep searching left for first occurrence
+            }
+            else if (arr[mid] < k) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+};
+
+/*
+Input: arr[] = [1, 2, 3, 4, 5], k = 4
+Output: 3
+Explanation: 4 appears at index 3.
+Input: arr[] = [11, 22, 33, 44, 55], k = 445
+Output: -1
+Explanation: 445 is not present.
+*/
