@@ -1,4 +1,4 @@
-//handling exception, parsing, multiple splitting 
+//1. handling exception, parsing, multiple splitting 
 
 import java.util.*;
 class Main {
@@ -21,3 +21,24 @@ class Main {
 }
 
 //Output : 60
+
+//2. extracting only marks value
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String str = "id:1,name:Tejal,marks:85";
+        String[] ppy = str.split(",");
+        
+        int mar = 0;
+        for(int i=0; i<ppy.length; i++){
+            String[] pp = ppy[i].split(":");
+            
+            if(pp[0].equals("marks")){
+                System.out.println(pp[1]);
+            }
+            
+        }
+    }
+}
+
+//output: 85
